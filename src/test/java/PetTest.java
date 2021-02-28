@@ -15,7 +15,7 @@ public class PetTest {
 
     @Before
     public void initialize() {
-        pet = new Pet();
+        pet = new Dog();
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
@@ -34,7 +34,7 @@ public class PetTest {
         int trickLevel = 60;
         String nickname = "pet";
         String[] habits = {"habit1", "habit2"};
-        PetSpecies species = PetSpecies.dog;
+        PetSpecies species = PetSpecies.DOG;
 
         pet.setAge(age);
         pet.setNickname(nickname);

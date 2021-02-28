@@ -21,7 +21,7 @@ public class FamilyTest {
     public void initialize() {
         human1 = new Human();
         human2 = new Human();
-        pet = new Pet();
+        pet = new RoboCat();
         family = new Family(human2, human2);
         System.setOut(new PrintStream(outputStreamCaptor));
     }

@@ -2,10 +2,10 @@ import java.util.Arrays;
 import java.util.Objects;
 
 enum PetSpecies {
-    dog, cat, undefined
+    DOG, ROBOT_CAT, UNKNOWN, DOMESTIC_CAT
 }
 
-public class Pet {
+abstract public class Pet {
     PetSpecies species;
     String nickname;
     int age;
@@ -31,7 +31,7 @@ public class Pet {
     }
 
     public Pet() {
-        this(PetSpecies.undefined, DEFAULT_PET_NAME);
+        this(PetSpecies.UNKNOWN, DEFAULT_PET_NAME);
     }
 
     public void eat() {

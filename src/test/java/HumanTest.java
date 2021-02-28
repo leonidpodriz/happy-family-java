@@ -19,7 +19,7 @@ public class HumanTest {
     @Before
     public void initialize() {
         human = new Human();
-        pet = new Pet();
+        pet = new DomesticCat();
         family = new Family(human, new Human());
         family.setPet(pet);
         System.setOut(new PrintStream(outputStreamCaptor));
