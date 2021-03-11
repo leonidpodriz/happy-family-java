@@ -1,10 +1,6 @@
 import java.util.Arrays;
 import java.util.Objects;
 
-enum PetSpecies {
-    DOG, ROBOT_CAT, UNKNOWN, DOMESTIC_CAT
-}
-
 abstract public class Pet {
     PetSpecies species;
     String nickname;
