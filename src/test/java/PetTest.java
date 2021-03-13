@@ -9,7 +9,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PetTest {
-    Pet pet;
+    Dog pet;
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
@@ -52,7 +52,7 @@ public class PetTest {
     @Test
     public void testPetFoul() {
         pet.foul();
-        assertSystemOut(Pet.FOUL);
+        assertSystemOut(Dog.FOUL);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class PetTest {
     @Test
     public void testPetRespond() {
         pet.respond();
-        assertSystemOut(String.format(Pet.RESPOND, pet.getNickname()));
+        assertSystemOut(String.format(Dog.RESPOND, pet.getNickname()));
     }
 
     @Test

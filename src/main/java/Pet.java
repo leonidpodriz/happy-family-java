@@ -10,8 +10,6 @@ abstract public class Pet {
 
     static final String DEFAULT_PET_NAME = "no-name";
     static final String EAT = "Я кушаю!";
-    static final String FOUL = "Нужно хорошо замести следы...";
-    static final String RESPOND = "Привет, хозяин. Я - %s. Я соскучился!";
 
 
     public Pet(PetSpecies species, String nickname, int age, int trickLevel, String[] habits) {
@@ -34,13 +32,8 @@ abstract public class Pet {
         System.out.println(EAT);
     }
 
-    public void respond() {
-        System.out.printf(RESPOND, nickname);
-    }
+    abstract public void respond();
 
-    public void foul() {
-        System.out.println(FOUL);
-    }
 
     public String getNickname() {
         return nickname;

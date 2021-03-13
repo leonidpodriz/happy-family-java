@@ -59,11 +59,15 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main_2(String[] args) {
         petCreating();
         humanCreating();
         familyCreating();
         familyChildManagement();
         overloadMemoryUsingHuman((int) Math.pow(2, 20));
+    }
+
+    public static void main(String[] args) {
+
     }
 }
