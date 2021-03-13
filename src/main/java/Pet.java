@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 abstract public class Pet {
-    PetSpecies species;
+    PetSpecies species = PetSpecies.UNKNOWN;
     String nickname;
     int age;
     int trickLevel;
@@ -12,20 +12,19 @@ abstract public class Pet {
     static final String EAT = "Я кушаю!";
 
 
-    public Pet(PetSpecies species, String nickname, int age, int trickLevel, String[] habits) {
-        this.species = species;
+    public Pet(String nickname, int age, int trickLevel, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
         this.habits = habits;
     }
 
-    public Pet(PetSpecies species, String nickname) {
-        this(species, nickname, 0, 0, new String[]{});
+    public Pet(String nickname) {
+        this(nickname, 0, 0, new String[]{});
     }
 
     public Pet() {
-        this(PetSpecies.UNKNOWN, DEFAULT_PET_NAME);
+        this(DEFAULT_PET_NAME);
     }
 
     public void eat() {

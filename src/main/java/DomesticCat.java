@@ -4,7 +4,8 @@ public class DomesticCat extends Pet implements FoulPet {
     static final String RESPOND = "Привет, хозяин. Я - %s. Я соскучился!";
 
     public DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
-        super(PetSpecies.DOMESTIC_CAT, nickname, age, trickLevel, habits);
+        super(nickname, age, trickLevel, habits);
+        setSpecies(PetSpecies.DOMESTIC_CAT);
     }
 
     public DomesticCat(String nickname) {

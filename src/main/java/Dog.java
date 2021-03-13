@@ -3,7 +3,8 @@ public class Dog extends Pet implements FoulPet {
     static final String RESPOND = "Привет, хозяин. Я - %s. Я соскучился!";
 
     public Dog(String nickname, int age, int trickLevel, String[] habits) {
-        super(PetSpecies.DOG, nickname, age, trickLevel, habits);
+        super(nickname, age, trickLevel, habits);
+        setSpecies(PetSpecies.DOG);
     }
 
     public Dog(String nickname) {
