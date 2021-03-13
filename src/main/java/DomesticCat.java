@@ -1,9 +1,12 @@
+
+import java.util.HashSet;
+
 public class DomesticCat extends Pet implements FoulPet {
     static final String FOUL = "Нужно хорошо замести следы...";
 
     static final String RESPOND = "Привет, хозяин. Я - %s. Я соскучился!";
 
-    public DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
+    public DomesticCat(String nickname, int age, int trickLevel, HashSet<String> habits) {
         super(nickname, age, trickLevel, habits);
         setSpecies(PetSpecies.DOMESTIC_CAT);
     }

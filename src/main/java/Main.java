@@ -1,8 +1,12 @@
+import java.time.DayOfWeek;
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class Main {
     public static void petCreating() {
         Pet p1 = new Fish();
         Pet p2 = new RoboCat("pet1");
-        Pet p3 = new Dog("pet2", 2, 90, new String[]{});
+        Pet p3 = new Dog("pet2", 2, 90, new HashSet<String>());
 
         System.out.println(p1);
         System.out.println(p2);
@@ -13,7 +17,10 @@ public class Main {
         Human h1 = new Human();
         Human h2 = new Human("N", "S", 1980);
         Human h3 = new Human("N", "S", 1980);
-        Human h4 = new Human("N", "S", 1980, 90, null, new String[][]{{"Monday", "do work"}});
+
+        Human h4 = new Human("N", "S", 1980, 90, null, new HashMap<DayOfWeek, String>() {{
+            put(DayOfWeek.MONDAY, "Nothing");
+        }});
 
         System.out.println(h1);
         System.out.println(h2);
@@ -25,7 +32,9 @@ public class Main {
         Human h1 = new Human();
         Human h2 = new Human("N", "S", 1980);
         Human h3 = new Human("N", "S", 1980);
-        Human h4 = new Human("N", "S", 1980, 90, null, new String[][]{{"Monday", "do work"}});
+        Human h4 = new Human("N", "S", 1980, 90, null, new HashMap<DayOfWeek, String>() {{
+            put(DayOfWeek.MONDAY, "Nothing");
+        }});
 
         Family f1 = new Family(h1, h2);
         Family f2 = new Family(h3, h4);

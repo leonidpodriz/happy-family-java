@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.List;
 
 public class FamilyTest {
     Human human1;
@@ -65,8 +66,8 @@ public class FamilyTest {
         Human child = new Human();
         family.addChild(child);
 
-        Human[] children = family.getChildren();
-        assertEquals(child, children[children.length - 1]);
+        List<Human> children = family.getChildren();
+        assertEquals(child, children.get(children.size() - 1));
     }
 
     @Test
@@ -76,12 +77,12 @@ public class FamilyTest {
         family.addChild(child1);
         family.addChild(child2);
 
-        Human[] children = family.getChildren();
-        assertEquals(child2, children[children.length - 1]);
+        List<Human> children = family.getChildren();
+        assertEquals(child2, children.get(children.size() - 1));
 
-        family.deleteChild(children.length - 1);
-        Human[] children_ofter_delete = family.getChildren();
-        assertNotEquals(child2, children_ofter_delete[children_ofter_delete.length - 1]);
+        family.deleteChild(children.size() - 1);
+        List<Human> children_ofter_delete = family.getChildren();
+        assertNotEquals(child2, children_ofter_delete.get(children_ofter_delete.size() - 1));
     }
 
     @Test
@@ -92,13 +93,13 @@ public class FamilyTest {
         family.addChild(child1);
         family.addChild(child2);
 
-        Human[] children = family.getChildren();
-        assertEquals(child2, children[children.length - 1]);
+        List<Human> children = family.getChildren();
+        assertEquals(child2, children.get(children.size() - 1));
 
         boolean deleteChildStatus1 = family.deleteChild(child2);
-        Human[] children_ofter_delete = family.getChildren();
+        List<Human> children_ofter_delete = family.getChildren();
         assertTrue(deleteChildStatus1);
-        assertNotEquals(child2, children_ofter_delete[children_ofter_delete.length - 1]);
+        assertNotEquals(child2, children_ofter_delete.get(children_ofter_delete.size() - 1));
 
         boolean deleteChildStatus2 = family.deleteChild(not_child);
         assertFalse(deleteChildStatus2);
@@ -110,7 +111,7 @@ public class FamilyTest {
                 "Family{mother=%s, father=%s, children=%s, pet=%s}",
                 family.getMother(),
                 family.getFather(),
-                Arrays.deepToString(family.getChildren()),
+                family.getChildren(),
                 family.getPet()
         );
 

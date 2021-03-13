@@ -1,4 +1,6 @@
+import java.time.DayOfWeek;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Human {
@@ -11,10 +13,10 @@ public class Human {
     private int year;
     private int iq;
     Family family;
-    private String[][] schedule;
+    private HashMap<DayOfWeek, String> schedule;
 
 
-    public Human(String name, String surname, int year, int iq, Family family, String[][] schedule) {
+    public Human(String name, String surname, int year, int iq, Family family, HashMap<DayOfWeek, String> schedule) {
         this.name = name;
         this.surname = surname;
         this.surname = surname;
@@ -25,14 +27,14 @@ public class Human {
     }
 
     public Human(String name, String surname, int year) {
-        this(name, surname, year, 0, null, new String[][]{{}});
+        this(name, surname, year, 0, null, new HashMap<DayOfWeek, String>());
     }
 
     public Human() {
         this("undefined", "undefined", 1970);
     }
 
-    public String[][] getSchedule() {
+    public HashMap<DayOfWeek, String> getSchedule() {
         return schedule;
     }
 
@@ -64,7 +66,7 @@ public class Human {
         this.surname = surname;
     }
 
-    public void setSchedule(String[][] schedule) {
+    public void setSchedule(HashMap<DayOfWeek, String> schedule) {
         this.schedule = schedule;
     }
 
@@ -105,22 +107,21 @@ public class Human {
                 surname,
                 year,
                 iq,
-                Arrays.deepToString(schedule)
+                schedule.toString()
         );
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Human human)) return false;
-        return getYear() == human.getYear() && getIq() == human.getIq() && getName().equals(human.getName()) && getSurname().equals(human.getSurname()) && Objects.equals(getFamily(), human.getFamily()) && Arrays.equals(getSchedule(), human.getSchedule());
+        if (!(o instanceof Human)) return false;
+        Human human = (Human) o;
+        return getYear() == human.getYear() && getIq() == human.getIq() && Objects.equals(getName(), human.getName()) && Objects.equals(getSurname(), human.getSurname()) && Objects.equals(getFamily(), human.getFamily()) && Objects.equals(getSchedule(), human.getSchedule());
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getName(), getSurname(), getYear(), getIq(), getFamily());
-        result = 31 * result + Arrays.hashCode(getSchedule());
-        return result;
+        return Objects.hash(getName(), getSurname(), getYear(), getIq(), getFamily(), getSchedule());
     }
 
     @Override

@@ -1,21 +1,23 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Family {
     private final Human mother;
     private final Human father;
-    private Human[] children;
+    private List<Human> children;
     private Pet pet;
 
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
-        this.children = new Human[]{};
+        this.children = new ArrayList<Human>();
 
         mother.setFamily(this);
         father.setFamily(this);
     }
 
-    public Human[] getChildren() {
+    public List<Human> getChildren() {
         return children;
     }
 
@@ -28,10 +30,10 @@ public class Family {
     }
 
     public boolean deleteChild(int index) {
-        if (index >= 0 && index < children.length) {
-            Human h = children[index];
+        if (index >= 0 && index < children.size()) {
+            Human h = children.get(index);
             h.setFamily(null);
-            children = removeByIndex(children, index);
+            children.remove(index);
             return true;
         } else {
             return false;
@@ -39,8 +41,8 @@ public class Family {
     }
 
     private int findChildIndex(Human child) {
-        for (int index = 0; index < children.length; index++){
-            if (child == children[index]) {
+        for (int index = 0; index < children.size(); index++){
+            if (child == children.get(index)) {
                 return index;
             }
         }
@@ -75,12 +77,11 @@ public class Family {
     }
 
     public int countFamily() {
-        return 2 + children.length;
+        return 2 + children.size();
     }
 
     public void addChild(Human child) {
-        children = Arrays.copyOf(children, children.length + 1);
-        children[children.length - 1] = child;
+        children.add(child);
         child.setFamily(this);
     }
 
@@ -89,7 +90,7 @@ public class Family {
         return "Family{" +
                 "mother=" + mother +
                 ", father=" + father +
-                ", children=" + Arrays.toString(children) +
+                ", children=" + children +
                 ", pet=" + pet +
                 '}';
     }

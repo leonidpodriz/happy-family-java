@@ -1,14 +1,16 @@
+import java.util.HashSet;
+
 public class Fish extends Pet {
 
     static final String RESPOND = "Привет, хозяин. Я - %s. Я соскучился!";
 
-    public Fish(String nickname, int age, int trickLevel, String[] habits) {
+    public Fish(String nickname, int age, int trickLevel, HashSet<String> habits) {
         super(nickname, age, trickLevel, habits);
         setSpecies(PetSpecies.FISH);
     }
 
     public Fish(String nickname) {
-        this(nickname, 0, 0, new String[]{});
+        this(nickname, 0, 0, new HashSet<String>());
     }
 
     public Fish() {

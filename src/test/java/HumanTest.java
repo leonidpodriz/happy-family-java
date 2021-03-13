@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.DayOfWeek;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,10 +41,10 @@ public class HumanTest {
         String surname = "Test surname";
         int year = 1980;
         int iq = 90;
-        String[][] schedule = {
-                {DayOfWeek.MONDAY.name(), "do work"},
-                {DayOfWeek.TUESDAY.name(), "do rest"},
-        };
+        HashMap<DayOfWeek, String> schedule = new HashMap<DayOfWeek, String>() {{
+            put(DayOfWeek.MONDAY, "Nothing");
+            put(DayOfWeek.TUESDAY, "Nothing");
+        }};
 
         human.setName(name);
         human.setSurname(surname);
@@ -55,7 +56,7 @@ public class HumanTest {
         assertEquals(surname, human.getSurname());
         assertEquals(year, human.getYear());
         assertEquals(iq, human.getIq());
-        assertArrayEquals(schedule, human.getSchedule());
+        assertEquals(schedule.toString(), human.getSchedule().toString());
         assertEquals(family, human.getFamily());
     }
 
@@ -103,7 +104,7 @@ public class HumanTest {
                 human.getSurname(),
                 human.getYear(),
                 human.getIq(),
-                Arrays.deepToString(human.getSchedule())
+                human.getSchedule().toString()
         );
         System.out.println(human);
 

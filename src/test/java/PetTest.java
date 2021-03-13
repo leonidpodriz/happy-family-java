@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,7 +34,7 @@ public class PetTest {
         int age = 5;
         int trickLevel = 60;
         String nickname = "pet";
-        String[] habits = {"habit1", "habit2"};
+        HashSet<String> habits = new HashSet<String>(Arrays.asList("habit1", "habit2"));
         PetSpecies species = PetSpecies.DOG;
 
         pet.setAge(age);
@@ -46,7 +47,7 @@ public class PetTest {
         assertEquals(trickLevel, pet.getTrickLevel());
         assertEquals(nickname, pet.getNickname());
         assertEquals(species, pet.getSpecies());
-        assertArrayEquals(habits, pet.getHabits());
+        assertArrayEquals(habits.toArray(), pet.getHabits().toArray());
     }
 
     @Test
@@ -75,7 +76,7 @@ public class PetTest {
                 pet.getNickname(),
                 pet.getAge(),
                 pet.getTrickLevel(),
-                Arrays.toString(pet.getHabits())
+                pet.getHabits().toString()
         );
         System.out.println(pet);
 

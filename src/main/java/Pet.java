@@ -1,18 +1,20 @@
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 abstract public class Pet {
     PetSpecies species = PetSpecies.UNKNOWN;
     String nickname;
     int age;
     int trickLevel;
-    String[] habits;
+    Set<String> habits;
 
     static final String DEFAULT_PET_NAME = "no-name";
     static final String EAT = "Я кушаю!";
 
 
-    public Pet(String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(String nickname, int age, int trickLevel, Set<String> habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -25,7 +27,7 @@ abstract public class Pet {
     }
 
     public Pet(String nickname) {
-        this(nickname, 0, 0, new String[]{});
+        this(nickname, 0, 0, new HashSet<String>());
     }
 
     public Pet() {
@@ -63,7 +65,7 @@ abstract public class Pet {
         this.nickname = nickname;
     }
 
-    public void setHabits(String[] habits) {
+    public void setHabits(Set<String> habits) {
         this.habits = habits;
     }
 
@@ -75,7 +77,7 @@ abstract public class Pet {
         this.trickLevel = trickLevel;
     }
 
-    public String[] getHabits() {
+    public Set<String> getHabits() {
         return habits;
     }
 
@@ -87,22 +89,21 @@ abstract public class Pet {
                 nickname,
                 age,
                 trickLevel,
-                Arrays.toString(habits)
+                habits.toString()
         );
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Pet pet)) return false;
-        return getAge() == pet.getAge() && getTrickLevel() == pet.getTrickLevel() && getSpecies() == pet.getSpecies() && getNickname().equals(pet.getNickname()) && Arrays.equals(habits, pet.habits);
+        if (!(o instanceof Pet)) return false;
+        Pet pet = (Pet) o;
+        return getAge() == pet.getAge() && getTrickLevel() == pet.getTrickLevel() && getSpecies() == pet.getSpecies() && Objects.equals(getNickname(), pet.getNickname()) && Objects.equals(getHabits(), pet.getHabits());
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel());
-        result = 31 * result + Arrays.hashCode(habits);
-        return result;
+        return Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel(), getHabits());
     }
 
     @Override
