@@ -17,6 +17,11 @@ abstract public class Pet {
         this.age = age;
         this.trickLevel = trickLevel;
         this.habits = habits;
+        this.species = getDefaultSpecies();
+    }
+
+    public PetSpecies getDefaultSpecies() {
+        return PetSpecies.UNKNOWN;
     }
 
     public Pet(String nickname) {

@@ -4,15 +4,14 @@ public class Dog extends Pet implements FoulPet {
 
     public Dog(String nickname, int age, int trickLevel, String[] habits) {
         super(nickname, age, trickLevel, habits);
-        setSpecies(PetSpecies.DOG);
     }
 
     public Dog(String nickname) {
-        this(nickname, 0, 0, new String[]{});
+        super(nickname);
     }
 
     public Dog() {
-        this(DEFAULT_PET_NAME);
+        super();
     }
 
     public void foul() {
@@ -22,5 +21,10 @@ public class Dog extends Pet implements FoulPet {
     @Override
     public void respond() {
         System.out.printf(RESPOND, nickname);
+    }
+
+    @Override
+    public PetSpecies getDefaultSpecies() {
+        return PetSpecies.DOG;
     }
 }

@@ -19,4 +19,9 @@ public class Fish extends Pet {
     public void respond() {
         System.out.printf(RESPOND, nickname);
     }
+
+    @Override
+    public PetSpecies getDefaultSpecies() {
+        return PetSpecies.FISH;
+    }
 }

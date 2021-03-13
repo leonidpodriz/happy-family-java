@@ -9,11 +9,11 @@ public class DomesticCat extends Pet implements FoulPet {
     }
 
     public DomesticCat(String nickname) {
-        this(nickname, 0, 0, new String[]{});
+        super(nickname);
     }
 
     public DomesticCat() {
-        this(DEFAULT_PET_NAME);
+        super();
     }
 
     public void foul() {
@@ -23,5 +23,10 @@ public class DomesticCat extends Pet implements FoulPet {
     @Override
     public void respond() {
         System.out.printf(RESPOND, nickname);
+    }
+
+    @Override
+    public PetSpecies getDefaultSpecies() {
+        return PetSpecies.DOMESTIC_CAT;
     }
 }

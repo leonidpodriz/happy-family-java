@@ -24,4 +24,9 @@ public class RoboCat extends Pet implements FoulPet {
     public void respond() {
         System.out.printf(RESPOND, nickname);
     }
+
+    @Override
+    public PetSpecies getDefaultSpecies() {
+        return PetSpecies.ROBOT_CAT;
+    }
 }
