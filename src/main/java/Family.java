@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Family {
@@ -11,7 +10,7 @@ public class Family {
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
-        this.children = new ArrayList<Human>();
+        this.children = new ArrayList<>();
 
         mother.setFamily(this);
         father.setFamily(this);
@@ -41,7 +40,7 @@ public class Family {
     }
 
     private int findChildIndex(Human child) {
-        for (int index = 0; index < children.size(); index++){
+        for (int index = 0; index < children.size(); index++) {
             if (child == children.get(index)) {
                 return index;
             }
@@ -57,19 +56,6 @@ public class Family {
 
     public void setPet(Pet pet) {
         this.pet = pet;
-    }
-
-    private static Human[] removeByIndex(Human[] a, int index) {
-        if (a == null || index < 0 || index >= a.length) {
-            return a;
-        }
-
-        Human[] result = new Human[a.length - 1];
-
-        System.arraycopy(a, 0, result, 0, index);
-        System.arraycopy(a, index + 1, result, index, a.length - index - 1);
-
-        return result;
     }
 
     public Pet getPet() {
@@ -93,11 +79,5 @@ public class Family {
                 ", children=" + children +
                 ", pet=" + pet +
                 '}';
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        GarbageCollectorUtils.prepareToDelete(this);
-        super.finalize();
     }
 }
