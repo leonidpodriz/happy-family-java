@@ -10,7 +10,7 @@ public class Human {
     private String surname;
     private int year;
     private int iq;
-    private Family family;
+    Family family;
     private String[][] schedule;
 
 
