@@ -5,7 +5,7 @@ import java.util.List;
 public class Family {
     private final Human mother;
     private final Human father;
-    private List<Human> children;
+    private final List<Human> children;
     private Pet pet;
 
     public Family(Human mother, Human father) {
