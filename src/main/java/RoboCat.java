@@ -3,16 +3,16 @@ public class RoboCat extends Pet implements FoulPet {
 
     static final String RESPOND = "Привет, хозяин. Я - %s. Я соскучился!";
 
-    public RoboCat(PetSpecies species, String nickname, int age, int trickLevel, String[] habits) {
-        super(species, nickname, age, trickLevel, habits);
+    public RoboCat(String nickname, int age, int trickLevel, String[] habits) {
+        super(PetSpecies.ROBOT_CAT, nickname, age, trickLevel, habits);
     }
 
-    public RoboCat(PetSpecies species, String nickname) {
-        this(species, nickname, 0, 0, new String[]{});
+    public RoboCat(String nickname) {
+        this(nickname, 0, 0, new String[]{});
     }
 
     public RoboCat() {
-        this(PetSpecies.UNKNOWN, DEFAULT_PET_NAME);
+        this(DEFAULT_PET_NAME);
     }
 
     public void foul() {

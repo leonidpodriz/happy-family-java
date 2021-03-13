@@ -3,16 +3,16 @@ public class DomesticCat extends Pet implements FoulPet {
 
     static final String RESPOND = "Привет, хозяин. Я - %s. Я соскучился!";
 
-    public DomesticCat(PetSpecies species, String nickname, int age, int trickLevel, String[] habits) {
-        super(species, nickname, age, trickLevel, habits);
+    public DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
+        super(PetSpecies.DOMESTIC_CAT, nickname, age, trickLevel, habits);
     }
 
-    public DomesticCat(PetSpecies species, String nickname) {
-        this(species, nickname, 0, 0, new String[]{});
+    public DomesticCat(String nickname) {
+        this(nickname, 0, 0, new String[]{});
     }
 
     public DomesticCat() {
-        this(PetSpecies.UNKNOWN, DEFAULT_PET_NAME);
+        this(DEFAULT_PET_NAME);
     }
 
     public void foul() {

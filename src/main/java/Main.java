@@ -1,8 +1,8 @@
 public class Main {
     public static void petCreating() {
         Pet p1 = new Fish();
-        Pet p2 = new RoboCat(PetSpecies.ROBOT_CAT, "pet1");
-        Pet p3 = new Dog(PetSpecies.ROBOT_CAT, "pet2", 2, 90, new String[]{});
+        Pet p2 = new RoboCat("pet1");
+        Pet p3 = new Dog("pet2", 2, 90, new String[]{});
 
         System.out.println(p1);
         System.out.println(p2);
