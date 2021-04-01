@@ -1,4 +1,7 @@
-import java.util.Arrays;
+package org.danit.family.pet;
+
+import org.danit.GarbageCollectorUtils;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -10,8 +13,8 @@ abstract public class Pet {
     int trickLevel;
     Set<String> habits;
 
-    static final String DEFAULT_PET_NAME = "no-name";
-    static final String EAT = "Я кушаю!";
+    static public final String DEFAULT_PET_NAME = "no-name";
+    static public final String EAT = "Я кушаю!";
 
 
     public Pet(String nickname, int age, int trickLevel, Set<String> habits) {

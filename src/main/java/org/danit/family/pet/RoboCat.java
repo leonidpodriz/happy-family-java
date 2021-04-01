@@ -1,22 +1,26 @@
+package org.danit.family.pet;
+
+import org.danit.family.pet.Pet;
 
 import java.util.HashSet;
+import java.util.Set;
 
-public class DomesticCat extends Pet implements FoulPet {
+public class RoboCat extends Pet implements FoulPet {
     static final String FOUL = "Нужно хорошо замести следы...";
 
     static final String RESPOND = "Привет, хозяин. Я - %s. Я соскучился!";
 
-    public DomesticCat(String nickname, int age, int trickLevel, HashSet<String> habits) {
+    public RoboCat(String nickname, int age, int trickLevel, Set<String> habits) {
         super(nickname, age, trickLevel, habits);
-        setSpecies(PetSpecies.DOMESTIC_CAT);
+        setSpecies(PetSpecies.ROBOT_CAT);
     }
 
-    public DomesticCat(String nickname) {
-        super(nickname);
+    public RoboCat(String nickname) {
+        this(nickname, 0, 0, new HashSet<String>());
     }
 
-    public DomesticCat() {
-        super();
+    public RoboCat() {
+        this(DEFAULT_PET_NAME);
     }
 
     public void foul() {
@@ -30,6 +34,6 @@ public class DomesticCat extends Pet implements FoulPet {
 
     @Override
     public PetSpecies getDefaultSpecies() {
-        return PetSpecies.DOMESTIC_CAT;
+        return PetSpecies.ROBOT_CAT;
     }
 }

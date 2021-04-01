@@ -1,3 +1,8 @@
+package org.danit.family;
+
+import org.danit.family.human.Human;
+import org.danit.family.pet.Pet;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +78,7 @@ public class Family {
 
     @Override
     public String toString() {
-        return "Family{" +
+        return "org.danit.family.Family{" +
                 "mother=" + mother +
                 ", father=" + father +
                 ", children=" + children +

@@ -1,3 +1,8 @@
+package org.danit.family.pet;
+
+import org.danit.family.pet.Pet;
+import org.danit.family.pet.PetSpecies;
+
 import java.util.HashSet;
 
 public class Fish extends Pet {

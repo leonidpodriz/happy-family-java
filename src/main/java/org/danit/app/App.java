@@ -1,8 +1,17 @@
+package org.danit.app;
+
+import org.danit.family.Family;
+import org.danit.family.human.Human;
+import org.danit.family.pet.Dog;
+import org.danit.family.pet.Fish;
+import org.danit.family.pet.Pet;
+import org.danit.family.pet.RoboCat;
+
 import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Main {
+public class App {
     public static void petCreating() {
         Pet p1 = new Fish();
         Pet p2 = new RoboCat("pet1");
@@ -41,8 +50,8 @@ public class Main {
 
         System.out.println(f1);
         System.out.println(f2);
-        System.out.printf("Family #1 count: %d\n", f1.countFamily());
-        System.out.printf("Family #2 count: %d\n", f2.countFamily());
+        System.out.printf("org.danit.family.Family #1 count: %d\n", f1.countFamily());
+        System.out.printf("org.danit.family.Family #2 count: %d\n", f2.countFamily());
     }
 
     public static void familyChildManagement() {
@@ -55,11 +64,11 @@ public class Main {
 
         f1.addChild(h3);
         System.out.println(f1);
-        System.out.printf("Family #1 count: %d\n", f1.countFamily());
+        System.out.printf("org.danit.family.Family #1 count: %d\n", f1.countFamily());
 
         boolean b = f1.deleteChild(0);
         System.out.println(f1);
-        System.out.printf("[%s] Family #1 count: %d\n", b, f1.countFamily());
+        System.out.printf("[%s] org.danit.family.Family #1 count: %d\n", b, f1.countFamily());
     }
 
     public static void overloadMemoryUsingHuman(int creatingCount) {
@@ -68,15 +77,11 @@ public class Main {
         }
     }
 
-    public static void main_2(String[] args) {
+    public static void main(String[] args) {
         petCreating();
         humanCreating();
         familyCreating();
         familyChildManagement();
         overloadMemoryUsingHuman((int) Math.pow(2, 20));
-    }
-
-    public static void main(String[] args) {
-
     }
 }

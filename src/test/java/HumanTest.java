@@ -1,3 +1,7 @@
+import org.danit.family.Family;
+import org.danit.family.human.Human;
+import org.danit.family.pet.DomesticCat;
+import org.danit.family.pet.Pet;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -5,7 +9,6 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.DayOfWeek;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -99,7 +102,7 @@ public class HumanTest {
     @Test
     public void testToString() {
         String expectedToString = String.format(
-                "Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}",
+                "org.danit.family.human.Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}",
                 human.getName(),
                 human.getSurname(),
                 human.getYear(),

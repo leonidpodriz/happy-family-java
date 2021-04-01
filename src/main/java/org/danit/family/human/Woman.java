@@ -1,3 +1,7 @@
+package org.danit.family.human;
+
+import org.danit.family.human.Human;
+
 public class Woman extends Human {
     @Override
     public void greetPet() {

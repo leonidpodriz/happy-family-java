@@ -1,3 +1,6 @@
+import org.danit.family.pet.Dog;
+import org.danit.family.pet.Pet;
+import org.danit.family.pet.PetSpecies;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,12 +1,16 @@
+package org.danit.family.human;
+
+import org.danit.GarbageCollectorUtils;
+import org.danit.family.Family;
+
 import java.time.DayOfWeek;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class Human {
-    static final String GREET_PET = "Привет, %s";
-    static final String TRICKY = "очень хитрый";
-    static final String NOT_TRICKY = "почти не хитрый";
+    static public final String GREET_PET = "Привет, %s";
+    static public final String TRICKY = "очень хитрый";
+    static public final String NOT_TRICKY = "почти не хитрый";
 
     private String name;
     private String surname;
@@ -27,7 +31,7 @@ public class Human {
     }
 
     public Human(String name, String surname, int year) {
-        this(name, surname, year, 0, null, new HashMap<DayOfWeek, String>());
+        this(name, surname, year, 0, null, new HashMap<>());
     }
 
     public Human() {
@@ -102,7 +106,7 @@ public class Human {
     @Override
     public String toString() {
         return String.format(
-                "Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}",
+                "org.danit.family.human.Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}",
                 name,
                 surname,
                 year,

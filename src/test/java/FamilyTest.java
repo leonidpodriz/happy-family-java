@@ -1,3 +1,7 @@
+import org.danit.family.Family;
+import org.danit.family.human.Human;
+import org.danit.family.pet.Pet;
+import org.danit.family.pet.RoboCat;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
 import java.util.List;
 
 public class FamilyTest {
@@ -108,7 +111,7 @@ public class FamilyTest {
     @Test
     public void testToString() {
         String expectedToString = String.format(
-                "Family{mother=%s, father=%s, children=%s, pet=%s}",
+                "org.danit.family.Family{mother=%s, father=%s, children=%s, pet=%s}",
                 family.getMother(),
                 family.getFather(),
                 family.getChildren(),
