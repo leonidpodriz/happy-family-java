@@ -8,10 +8,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Human {
-    static public final String GREET_PET = "Привет, %s";
-    static public final String TRICKY = "очень хитрый";
-    static public final String NOT_TRICKY = "почти не хитрый";
-
     private String name;
     private String surname;
     private int year;
@@ -84,23 +80,6 @@ public class Human {
 
     public void setFamily(Family family) {
         this.family = family;
-    }
-
-    public void greetPet() {
-        System.out.printf(GREET_PET, family.getPet().getNickname());
-    }
-
-    private String getPetTrickLevel() {
-        return family.getPet().getTrickLevel() > 50 ? TRICKY : NOT_TRICKY;
-    }
-
-    public void describePet() {
-        System.out.printf(
-                "У меня есть %s, ему %s лет, он %s",
-                family.getPet().getSpecies(),
-                family.getPet().getAge(),
-                getPetTrickLevel()
-        );
     }
 
     @Override

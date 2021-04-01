@@ -41,11 +41,8 @@ public class FamilyTest {
 
     @Test
     public void testSettersAndSetters() {
-        family.setPet(null);
-        assertNull(family.getPet());
-
-        family.setPet(pet);
-        assertEquals(pet, family.getPet());
+        family.addPet(pet);
+        assertTrue(family.getPets().contains(pet));
     }
 
     @Test
@@ -111,11 +108,11 @@ public class FamilyTest {
     @Test
     public void testToString() {
         String expectedToString = String.format(
-                "org.danit.family.Family{mother=%s, father=%s, children=%s, pet=%s}",
+                "org.danit.family.Family{mother=%s, father=%s, children=%s, pets=%s}",
                 family.getMother(),
                 family.getFather(),
                 family.getChildren(),
-                family.getPet()
+                family.getPets()
         );
 
         System.out.println(family);

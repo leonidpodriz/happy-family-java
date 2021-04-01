@@ -4,13 +4,15 @@ import org.danit.family.human.Human;
 import org.danit.family.pet.Pet;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Family {
     private final Human mother;
     private final Human father;
     private final List<Human> children;
-    private Pet pet;
+    private final Set<Pet> pets = new HashSet<>();
 
     public Family(Human mother, Human father) {
         this.mother = mother;
@@ -59,12 +61,12 @@ public class Family {
         return deleteChild(index);
     }
 
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void addPet(Pet pet) {
+        this.pets.add(pet);
     }
 
-    public Pet getPet() {
-        return pet;
+    public Set<Pet> getPets() {
+        return pets;
     }
 
     public int countFamily() {
@@ -82,7 +84,7 @@ public class Family {
                 "mother=" + mother +
                 ", father=" + father +
                 ", children=" + children +
-                ", pet=" + pet +
+                ", pets=" + getPets() +
                 '}';
     }
 }

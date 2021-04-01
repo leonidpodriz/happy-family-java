@@ -25,7 +25,7 @@ public class HumanTest {
         human = new Human();
         pet = new DomesticCat();
         family = new Family(human, new Human());
-        family.setPet(pet);
+        family.addPet(pet);
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
@@ -44,7 +44,7 @@ public class HumanTest {
         String surname = "Test surname";
         int year = 1980;
         int iq = 90;
-        HashMap<DayOfWeek, String> schedule = new HashMap<DayOfWeek, String>() {{
+        HashMap<DayOfWeek, String> schedule = new HashMap<>() {{
             put(DayOfWeek.MONDAY, "Nothing");
             put(DayOfWeek.TUESDAY, "Nothing");
         }};
@@ -61,42 +61,6 @@ public class HumanTest {
         assertEquals(iq, human.getIq());
         assertEquals(schedule.toString(), human.getSchedule().toString());
         assertEquals(family, human.getFamily());
-    }
-
-    @Test
-    public void testPetGreet() {
-        human.greetPet();
-        String expectedPetGreet = String.format(Human.GREET_PET, family.getPet().getNickname());
-
-        assertSystemOut(expectedPetGreet);
-    }
-
-    @Test
-    public void testDescribeNotTrickyPet() {
-        pet.setTrickLevel(40);
-
-        human.describePet();
-        String expectedPetDescribe = String.format("У меня есть %s, ему %s лет, он %s",
-                family.getPet().getSpecies(),
-                family.getPet().getAge(),
-                Human.NOT_TRICKY
-        );
-
-        assertSystemOut(expectedPetDescribe);
-    }
-
-    @Test
-    public void testDescribeTrickyPet() {
-        pet.setTrickLevel(60);
-
-        human.describePet();
-        String expectedPetDescribe = String.format("У меня есть %s, ему %s лет, он %s",
-                family.getPet().getSpecies(),
-                family.getPet().getAge(),
-                Human.TRICKY
-        );
-
-        assertSystemOut(expectedPetDescribe);
     }
 
     @Test
