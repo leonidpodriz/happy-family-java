@@ -1,10 +1,10 @@
 package org.danit.family.human;
 
-import org.danit.GarbageCollectorUtils;
 import org.danit.family.Family;
 
 import java.time.DayOfWeek;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Human {
@@ -17,7 +17,7 @@ public class Human {
     private int year;
     private int iq;
     Family family;
-    private HashMap<DayOfWeek, String> schedule;
+    private Map<DayOfWeek, String> schedule;
 
 
     public Human(String name, String surname, int year, int iq, Family family, HashMap<DayOfWeek, String> schedule) {
@@ -38,7 +38,7 @@ public class Human {
         this("undefined", "undefined", 1970);
     }
 
-    public HashMap<DayOfWeek, String> getSchedule() {
+    public Map<DayOfWeek, String> getSchedule() {
         return schedule;
     }
 
@@ -118,19 +118,12 @@ public class Human {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Human)) return false;
-        Human human = (Human) o;
+        if (!(o instanceof Human human)) return false;
         return getYear() == human.getYear() && getIq() == human.getIq() && Objects.equals(getName(), human.getName()) && Objects.equals(getSurname(), human.getSurname()) && Objects.equals(getFamily(), human.getFamily()) && Objects.equals(getSchedule(), human.getSchedule());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getSurname(), getYear(), getIq(), getFamily(), getSchedule());
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        GarbageCollectorUtils.prepareToDelete(this);
-        super.finalize();
     }
 }
