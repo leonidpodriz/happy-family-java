@@ -1,13 +1,11 @@
 package org.danit.family.pet;
 
-import org.danit.GarbageCollectorUtils;
-
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 abstract public class Pet {
-    PetSpecies species = PetSpecies.UNKNOWN;
+    PetSpecies species;
     String nickname;
     int age;
     int trickLevel;
@@ -30,7 +28,7 @@ abstract public class Pet {
     }
 
     public Pet(String nickname) {
-        this(nickname, 0, 0, new HashSet<String>());
+        this(nickname, 0, 0, new HashSet<>());
     }
 
     public Pet() {
@@ -99,19 +97,12 @@ abstract public class Pet {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Pet)) return false;
-        Pet pet = (Pet) o;
+        if (!(o instanceof Pet pet)) return false;
         return getAge() == pet.getAge() && getTrickLevel() == pet.getTrickLevel() && getSpecies() == pet.getSpecies() && Objects.equals(getNickname(), pet.getNickname()) && Objects.equals(getHabits(), pet.getHabits());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel(), getHabits());
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        GarbageCollectorUtils.prepareToDelete(this);
-        super.finalize();
     }
 }
