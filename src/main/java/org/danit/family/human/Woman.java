@@ -12,4 +12,9 @@ public class Woman extends Human {
     public void makeup() {
         System.out.print("makeup");
     }
+
+    @Override
+    public String getChildName() {
+        return "girl";
+    }
 }

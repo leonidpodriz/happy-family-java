@@ -12,12 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class FamilyService {
-    private final Dao<Family> dao;
-
-    public FamilyService(Dao<Family> dao) {
-        this.dao = dao;
-    }
+public record FamilyService(Dao<Family> dao) {
 
     public List<Family> getAllFamilies() {
         return dao.getAll();

@@ -1,6 +1,7 @@
 package org.danit.family.human;
 
 import org.danit.family.Family;
+import org.danit.family.PrettyFormat;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -9,7 +10,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.*;
 
-public class Human {
+public class Human implements PrettyFormat {
     public static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private String name;
     private String surname;
@@ -132,5 +133,17 @@ public class Human {
         if (this == o) return true;
         if (!(o instanceof Human human)) return false;
         return getBirthDate() == human.getBirthDate() && getIq() == human.getIq() && Objects.equals(getName(), human.getName()) && Objects.equals(getSurname(), human.getSurname()) && Objects.equals(getFamily(), human.getFamily()) && Objects.equals(getSchedule(), human.getSchedule());
+    }
+
+    @Override
+    public String prettyFormat() {
+        return String.format(
+                "{name='%s', surname='%s', birthDate='%s', iq=%d, schedule=%s}",
+                name, surname, sdf.format(birthDate), iq, schedule.toString()
+        );
+    }
+
+    public String getChildName() {
+        return "child";
     }
 }

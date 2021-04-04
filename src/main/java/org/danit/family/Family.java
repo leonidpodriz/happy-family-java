@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Family {
+public class Family implements PrettyFormat {
     private final Human mother;
     private final Human father;
     private final List<Human> children;
@@ -89,11 +89,29 @@ public class Family {
 
     @Override
     public String toString() {
-        return "org.danit.family.Family{" +
-                "mother=" + mother +
-                ", father=" + father +
-                ", children=" + children +
-                ", pets=" + getPets() +
-                '}';
+        return prettyFormat();
+    }
+
+    @Override
+    public String prettyFormat() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("family:\n");
+        sb.append(String.format("\tmother: %s\n", mother.prettyFormat()));
+        sb.append(String.format("\tfather: %s\n", father.prettyFormat()));
+
+        if (children.size() > 0) {
+            sb.append("\tchildren:\n");
+            children.forEach(ch -> sb.append(String.format("\t\t%s: %s\n", ch.getChildName(), ch.prettyFormat())));
+            sb.append("\n");
+        }
+
+        if (pets.size() > 0) {
+            sb.append("\tpets: [");
+            pets.forEach(p -> sb.append(p.prettyFormat()));
+            sb.append("]");
+            sb.append("\n");
+        }
+
+        return sb.toString();
     }
 }

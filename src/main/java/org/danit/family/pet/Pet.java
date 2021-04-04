@@ -1,10 +1,12 @@
 package org.danit.family.pet;
 
+import org.danit.family.PrettyFormat;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-abstract public class Pet {
+abstract public class Pet implements PrettyFormat {
     PetSpecies species;
     String nickname;
     int age;
@@ -104,5 +106,17 @@ abstract public class Pet {
     @Override
     public int hashCode() {
         return Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel(), getHabits());
+    }
+
+    @Override
+    public String prettyFormat() {
+        return String.format(
+                "{species=%s, nickname='%s', age=%d, trickLevel=%d, habits=%s}",
+                species,
+                nickname,
+                age,
+                trickLevel,
+                habits
+        );
     }
 }
