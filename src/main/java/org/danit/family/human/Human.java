@@ -130,9 +130,4 @@ public class Human {
         if (!(o instanceof Human human)) return false;
         return getBirthDate() == human.getBirthDate() && getIq() == human.getIq() && Objects.equals(getName(), human.getName()) && Objects.equals(getSurname(), human.getSurname()) && Objects.equals(getFamily(), human.getFamily()) && Objects.equals(getSchedule(), human.getSchedule());
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(), getSurname(), getBirthDate(), getIq(), getFamily(), getSchedule());
-    }
 }

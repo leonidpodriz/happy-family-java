@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class FamilyService {
     private final Dao<Family> dao;
@@ -27,10 +28,7 @@ public class FamilyService {
     }
 
     private void displayAllFamilies(List<Family> allFamilies) {
-        for (int index = 0; index < allFamilies.size(); index++) {
-            Family family = allFamilies.get(index);
-            displayFamilyWithIndex(family, index);
-        }
+        IntStream.range(0, allFamilies.size()).forEach(i -> displayFamilyWithIndex(allFamilies.get(i), i));
     }
 
     public void displayAllFamilies() {
@@ -107,9 +105,10 @@ public class FamilyService {
     }
 
     public Family deleteAllChildrenOlderThen(Family family, int age) {
-        for (Human child : family.getChildren()) {
-            if (child.getAge() > age) family.deleteChild(child);
-        }
+        family.getChildren().stream()
+                .filter(h -> h.getAge() > age)
+                .collect(Collectors.toSet()) // Avoiding ConcurrentModificationException or null in the collection
+                .forEach(family::deleteChild);
         dao.save(family);
         return family;
     }
