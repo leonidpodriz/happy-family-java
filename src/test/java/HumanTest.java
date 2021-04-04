@@ -8,7 +8,11 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.text.ParseException;
 import java.time.DayOfWeek;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,8 +25,8 @@ public class HumanTest {
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @Before
-    public void initialize() {
-        human = new Human();
+    public void initialize() throws ParseException {
+        human = new Human("John", "Doe", "04/04/2021");
         pet = new DomesticCat();
         family = new Family(human, new Human());
         family.addPet(pet);
@@ -51,13 +55,13 @@ public class HumanTest {
 
         human.setName(name);
         human.setSurname(surname);
-        human.setYear(year);
+        human.setBirthDate(year);
         human.setIq(iq);
         human.setSchedule(schedule);
 
         assertEquals(name, human.getName());
         assertEquals(surname, human.getSurname());
-        assertEquals(year, human.getYear());
+        assertEquals(year, human.getBirthDate());
         assertEquals(iq, human.getIq());
         assertEquals(schedule.toString(), human.getSchedule().toString());
         assertEquals(family, human.getFamily());
@@ -66,10 +70,9 @@ public class HumanTest {
     @Test
     public void testToString() {
         String expectedToString = String.format(
-                "org.danit.family.human.Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}",
+                "org.danit.family.human.Human{name='%s', surname='%s', birthDate=04/04/2021, iq=%d, schedule=%s}",
                 human.getName(),
                 human.getSurname(),
-                human.getYear(),
                 human.getIq(),
                 human.getSchedule().toString()
         );
