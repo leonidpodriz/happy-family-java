@@ -3,6 +3,7 @@ package org.danit.family.human;
 import org.danit.family.Family;
 import org.danit.family.PrettyFormat;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +11,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.*;
 
-public class Human implements PrettyFormat {
+public class Human implements PrettyFormat, Serializable {
     public static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private String name;
     private String surname;

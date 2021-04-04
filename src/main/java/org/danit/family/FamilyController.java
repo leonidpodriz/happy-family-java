@@ -16,7 +16,7 @@ public record FamilyController(FamilyService service) {
     static String[] menNames = new String[]{"James", "John", "Robert", "Michael", "William"};
     static String[] womenNames = new String[]{"Mary", "Patricia", "Jennifer", "Linda", "Elizabeth"};
     static String[] surnames = new String[]{"Adin", "Baer", "Borror", "Fikes", "Gorelik"};
-    static int MAX_GENERATION_COUNT = 20;
+    static int MAX_GENERATION_COUNT = 10;
 
     public void console$generateTestData(Console console) {
         for (int i = 0; i < MAX_GENERATION_COUNT; i++) {

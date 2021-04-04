@@ -3,12 +3,13 @@ package org.danit.family;
 import org.danit.family.human.Human;
 import org.danit.family.pet.Pet;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Family implements PrettyFormat {
+public class Family implements PrettyFormat, Serializable {
     private final Human mother;
     private final Human father;
     private final List<Human> children;
