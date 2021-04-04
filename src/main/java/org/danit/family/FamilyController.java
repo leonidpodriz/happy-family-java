@@ -4,32 +4,53 @@ import org.danit.console.Callback;
 import org.danit.console.Console;
 import org.danit.console.RunnableConsole;
 import org.danit.family.human.Human;
+import org.danit.family.human.Man;
+import org.danit.family.human.Woman;
 
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.function.Supplier;
 
 public record FamilyController(FamilyService service) {
+    static String[] menNames = new String[]{"James", "John", "Robert", "Michael", "William"};
+    static String[] womenNames = new String[]{"Mary", "Patricia", "Jennifer", "Linda", "Elizabeth"};
+    static String[] surnames = new String[]{"Adin", "Baer", "Borror", "Fikes", "Gorelik"};
+    static int MAX_GENERATION_COUNT = 20;
 
     public void console$generateTestData(Console console) {
+        for (int i = 0; i < MAX_GENERATION_COUNT; i++) {
+            String menName = menNames[(int) Math.round(Math.random() * (menNames.length - 1))];
+            String womenName = womenNames[(int) Math.round(Math.random() * (womenNames.length - 1))];
+            String surname = surnames[(int) Math.round(Math.random() * (surnames.length - 1))];
+            Man man = new Man(menName, surname, new GregorianCalendar(1, Calendar.JANUARY, 1970));
+            Woman woman = new Woman(womenName, surname, new GregorianCalendar(1, Calendar.JANUARY, 1970));
+            consoleHelper$createNewFamily(woman, man, console);
+        }
     }
 
     public void console$displayAllFamilies(Console console) {
         service.displayAllFamilies();
     }
 
+    public int getNumber(Console console) {
+        console.printLine("Enter number to search:");
+        return console.readInt();
+    }
+
 
     public void console$displayAllFamiliesWithCountGreaterThan(Console console) {
-        int count = console.readInt();
+        int count = getNumber(console);
         service.displayAllFamilies(service.getFamiliesBiggerThan(count));
     }
 
     public void console$displayAllFamiliesWithCountLessThan(Console console) {
-        int count = console.readInt();
+        int count = getNumber(console);
         service.displayAllFamilies(service.getFamiliesLessThan(count));
     }
 
     public void console$countFamiliesWithMembersCount(Console console) {
-        int count = console.readInt();
+        int count = getNumber(console);
         console.printLine(String.format("Count: %s", service.countFamiliesWithMemberNumber(count)));
     }
 
@@ -51,11 +72,20 @@ public record FamilyController(FamilyService service) {
         return h;
     }
 
+    public void consoleHelper$createNewFamily(Human mother, Human father, Console console) {
+        try {
+            Family newFamily = service.createNewFamily(mother, father);
+            console.printLine(String.format("Generated: %s", newFamily));
+        } catch (RuntimeException e) {
+            console.printLine("Family can not be created!");
+        }
+    }
+
     public void console$createNewFamily(Console console) {
         Human mother = consoleHelper$createHuman("Mother", console);
         Human father = consoleHelper$createHuman("Father", console);
 
-        service.createNewFamily(mother, father);
+        consoleHelper$createNewFamily(mother, father, console);
     }
 
     public void console$removeFamilyByIndex(Console console) {

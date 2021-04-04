@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public record FamilyService(Dao<Family> dao) {
+    static int MAX_FAMILIES_COUNT = 15;
 
     public List<Family> getAllFamilies() {
         return dao.getAll();
@@ -47,6 +48,7 @@ public record FamilyService(Dao<Family> dao) {
     }
 
     public Family createNewFamily(Human human1, Human human2) {
+        if (dao.getAll().size() > MAX_FAMILIES_COUNT) throw new FamilyOverflowException();
         Family newFamily = new Family(human1, human2);
         dao.save(newFamily);
 
