@@ -3,6 +3,7 @@ package org.danit.family.human;
 import org.danit.family.Family;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -31,7 +32,7 @@ public class Human {
     }
 
     public Human() {
-        this("undefined", "undefined", 1970);
+        this("undefined", "undefined", LocalDate.now().getYear());
     }
 
     public Map<DayOfWeek, String> getSchedule() {
@@ -60,6 +61,10 @@ public class Human {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public int getAge() {
+        return LocalDate.now().getYear() - year;
     }
 
     public void setSurname(String surname) {
