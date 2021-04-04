@@ -19,7 +19,7 @@ public record FamilyService(Dao<Family> dao) {
     }
 
     private void displayFamilyWithIndex(Family family, int index) {
-        System.out.printf("%d) %s\n", index + 1, family);
+        System.out.printf("%d) %s\n=================================\n", index + 1, family);
     }
 
     public void displayAllFamilies(List<Family> allFamilies) {
