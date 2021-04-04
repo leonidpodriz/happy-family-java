@@ -27,7 +27,7 @@ public class FamilyService {
         System.out.printf("%d) %s\n", index + 1, family);
     }
 
-    private void displayAllFamilies(List<Family> allFamilies) {
+    public void displayAllFamilies(List<Family> allFamilies) {
         IntStream.range(0, allFamilies.size()).forEach(i -> displayFamilyWithIndex(allFamilies.get(i), i));
     }
 

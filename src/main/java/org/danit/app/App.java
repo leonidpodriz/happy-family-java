@@ -1,87 +1,64 @@
 package org.danit.app;
 
+import org.danit.console.Callback;
+import org.danit.console.Console;
+import org.danit.console.RunnableConsole;
 import org.danit.family.Family;
-import org.danit.family.human.Human;
-import org.danit.family.pet.Dog;
-import org.danit.family.pet.Fish;
-import org.danit.family.pet.Pet;
-import org.danit.family.pet.RoboCat;
+import org.danit.family.FamilyController;
+import org.danit.family.FamilyDao;
+import org.danit.family.FamilyService;
+import org.danit.interfaces.Dao;
 
-import java.time.DayOfWeek;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
-    public static void petCreating() {
-        Pet p1 = new Fish();
-        Pet p2 = new RoboCat("pet1");
-        Pet p3 = new Dog("pet2", 2, 90, new HashSet<String>());
+    static Console console = new RunnableConsole(App::getOptions);
+    static Dao<Family> dao = new FamilyDao();
+    static FamilyService familyService = new FamilyService(dao);
+    static FamilyController familyController = new FamilyController(familyService);
 
-        System.out.println(p1);
-        System.out.println(p2);
-        System.out.println(p3);
-    }
+    public static List<Callback> getOptions() {
+        List<Callback> callbacks = new ArrayList<>();
 
-    public static void humanCreating() {
-        Human h1 = new Human();
-        Human h2 = new Human("N", "S", 1980);
-        Human h3 = new Human("N", "S", 1980);
+        callbacks.add(new Callback(
+                "Generate test data",
+                familyController::console$generateTestData
+        ));
+        callbacks.add(new Callback(
+                "Display all families",
+                familyController::console$displayAllFamilies
+        ));
+        callbacks.add(new Callback(
+                "Display all families with count greater than",
+                familyController::console$displayAllFamiliesWithCountGreaterThan
+        ));
+        callbacks.add(new Callback(
+                "Display all families with count less than",
+                familyController::console$displayAllFamiliesWithCountLessThan
+        ));
+        callbacks.add(new Callback(
+                "Display all families with specific count",
+                familyController::console$countFamiliesWithMembersCount
+        ));
+        callbacks.add(new Callback(
+                "Create new family",
+                familyController::console$createNewFamily
+        ));
+        callbacks.add(new Callback(
+                "Remove family by index",
+                familyController::console$removeFamilyByIndex
+        ));
+        callbacks.add(new Callback(
+                "Remove all children older than",
+                familyController::console$removeAllChildrenOlderThan
+        ));
+        callbacks.add(new Callback("Exit", Console::prepareToExit));
 
-        Human h4 = new Human("N", "S", 1980, 90, null, new HashMap<DayOfWeek, String>() {{
-            put(DayOfWeek.MONDAY, "Nothing");
-        }});
-
-        System.out.println(h1);
-        System.out.println(h2);
-        System.out.println(h3);
-        System.out.println(h4);
-    }
-
-    public static void familyCreating() {
-        Human h1 = new Human();
-        Human h2 = new Human("N", "S", 1980);
-        Human h3 = new Human("N", "S", 1980);
-        Human h4 = new Human("N", "S", 1980, 90, null, new HashMap<DayOfWeek, String>() {{
-            put(DayOfWeek.MONDAY, "Nothing");
-        }});
-
-        Family f1 = new Family(h1, h2);
-        Family f2 = new Family(h3, h4);
-
-        System.out.println(f1);
-        System.out.println(f2);
-        System.out.printf("org.danit.family.Family #1 count: %d\n", f1.countFamily());
-        System.out.printf("org.danit.family.Family #2 count: %d\n", f2.countFamily());
-    }
-
-    public static void familyChildManagement() {
-        Human h1 = new Human();
-        Human h2 = new Human("N", "S", 1980);
-        Human h3 = new Human("N", "S", 1980);
-
-        Family f1 = new Family(h1, h2);
-
-
-        f1.addChild(h3);
-        System.out.println(f1);
-        System.out.printf("org.danit.family.Family #1 count: %d\n", f1.countFamily());
-
-        boolean b = f1.deleteChild(0);
-        System.out.println(f1);
-        System.out.printf("[%s] org.danit.family.Family #1 count: %d\n", b, f1.countFamily());
-    }
-
-    public static void overloadMemoryUsingHuman(int creatingCount) {
-        for (int i = 0; i < creatingCount; i++) {
-            new Human();
-        }
+        return callbacks;
     }
 
     public static void main(String[] args) {
-        petCreating();
-        humanCreating();
-        familyCreating();
-        familyChildManagement();
-        overloadMemoryUsingHuman((int) Math.pow(2, 20));
+        console.run();
     }
 }

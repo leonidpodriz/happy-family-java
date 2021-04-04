@@ -3,7 +3,6 @@ package org.danit.family.human;
 import org.danit.family.Family;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -11,7 +10,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Human {
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    public static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private String name;
     private String surname;
     private long birthDate;
@@ -40,6 +39,10 @@ public class Human {
 
     public Human(String name, String surname, String birthDate) throws ParseException {
         this(name, surname, sdf.parse(birthDate).getTime(), 0, null, new HashMap<>());
+    }
+
+    public Human(String name, String surname, String birthDate, int iq) throws ParseException {
+        this(name, surname, sdf.parse(birthDate).getTime(), iq, null, new HashMap<>());
     }
 
     public Human() {
