@@ -79,6 +79,15 @@ public class Family {
     }
 
     @Override
+    public int hashCode() {
+        int result = getMother().hashCode();
+        result = 31 * result + getFather().hashCode();
+        result = 31 * result + getChildren().hashCode();
+        result = 31 * result + (getPets() != null ? getPets().hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "org.danit.family.Family{" +
                 "mother=" + mother +
