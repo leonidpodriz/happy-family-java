@@ -1,3 +1,5 @@
+package org.danit.family;
+
 import org.danit.family.pet.Dog;
 import org.danit.family.pet.Pet;
 import org.danit.family.pet.PetSpecies;
@@ -37,7 +39,7 @@ public class PetTest {
         int age = 5;
         int trickLevel = 60;
         String nickname = "pet";
-        HashSet<String> habits = new HashSet<String>(Arrays.asList("habit1", "habit2"));
+        HashSet<String> habits = new HashSet<>(Arrays.asList("habit1", "habit2"));
         PetSpecies species = PetSpecies.DOG;
 
         pet.setAge(age);

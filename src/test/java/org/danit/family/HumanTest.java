@@ -1,3 +1,5 @@
+package org.danit.family;
+
 import org.danit.family.Family;
 import org.danit.family.human.Human;
 import org.danit.family.pet.DomesticCat;

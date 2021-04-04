@@ -1,36 +1,33 @@
-import org.danit.family.Family;
+package org.danit.family;
+
 import org.danit.family.human.Human;
 import org.danit.family.pet.Pet;
 import org.danit.family.pet.RoboCat;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class FamilyTest {
-    Human human1;
-    Human human2;
-    Family family;
-    Pet pet;
+    Human human1 = new Human();
+    Human human2 = new Human();
+    Family family = new Family(human2, human2);
+    Pet pet = new RoboCat();
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
-    @Before
+
+    @BeforeEach
     public void initialize() {
-        human1 = new Human();
-        human2 = new Human();
-        pet = new RoboCat();
-        family = new Family(human2, human2);
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         System.setOut(standardOut);
     }
